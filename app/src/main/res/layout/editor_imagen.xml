@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="VectorDrawableCompat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linear_titulo_editor_imagen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#78909c"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/EdImg_more_less"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:background="@drawable/fondo_botones_main"
+                android:onClick="opcionesEditorImagen"
+                app:srcCompat="@drawable/editor_dibujo_mas_opciones" />
+
+            <TextView
+                android:id="@+id/tv_EdImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="30dp"
+                android:text="Editar imagen"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/EdImg_choose_img"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:onClick="opcionesEditorImagen"
+                        app:srcCompat="@drawable/panel_titulo_chooseimg" />
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/EdImg_delete"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:onClick="opcionesEditorImagen"
+                        app:srcCompat="@drawable/panel_titulo_delete" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/EdImg_linear_contenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#b0bec5"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_weight="1"
+                            android:text="Color"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:orientation="vertical">
+
+                            <HorizontalScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:background="#78909c"
+                                android:scrollbars="none">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="2dp">
+
+                                    <ImageView
+                                        android:id="@+id/EdImg_col1"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorImagen"
+                                        android:background="@android:color/background_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/EdImg_col2"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorImagen"
+                                        android:background="@android:color/holo_red_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/EdImg_col3"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorImagen"
+                                        android:background="@android:color/holo_blue_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/EdImg_col4"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorImagen"
+                                        android:background="@android:color/holo_green_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/EdImg_col5"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorImagen"
+                                        android:background="@android:color/holo_blue_light" />
+
+                                    <ImageView
+                                        android:id="@+id/EdImg_col6"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorImagen"
+                                        android:background="@android:color/holo_purple" />
+
+                                    <ImageView
+                                        android:id="@+id/EdImg_col7"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorImagen"
+                                        android:background="@android:color/white" />
+
+                                    <ImageView
+                                        android:id="@+id/EdImg_col8"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorImagen"
+                                        android:background="@android:color/holo_orange_light" />
+                                </LinearLayout>
+                            </HorizontalScrollView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <SeekBar
+                        android:id="@+id/EdImg_seekbar_col_alpha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

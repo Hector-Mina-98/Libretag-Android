@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="horizontal"
+    tools:ignore="VectorDrawableCompat"
+    tools:layout_editor_absoluteX="16dp"
+    tools:layout_editor_absoluteY="16dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linear_titulo_editor_texto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#78909c"
+            android:clickable="true"
+            android:elevation="10dp"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/ET_more_less"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:background="@drawable/fondo_botones_main"
+                app:srcCompat="@drawable/editor_dibujo_mas_opciones" />
+
+            <TextView
+                android:id="@+id/tv_ET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="30dp"
+                android:text="Editar texto"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageButton"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:visibility="invisible"
+                        app:srcCompat="@android:drawable/ic_menu_revert" />
+
+                    <ImageView
+                        android:id="@+id/ET_delete"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:onClick="opcionesEditorTexto"
+                        app:srcCompat="@drawable/panel_titulo_delete" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ET_linear_contenido"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:visibility="gone">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linear_editor_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_ET2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_weight="1"
+                            android:text="Fondo"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:orientation="vertical">
+
+                            <HorizontalScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:background="#28ffffff"
+                                android:scrollbars="none">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="2dp">
+
+                                    <ImageView
+                                        android:id="@+id/ET_bg1"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="bgEditorTexto"
+                                        app:srcCompat="@android:color/background_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_bg2"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="bgEditorTexto"
+                                        app:srcCompat="@android:color/holo_red_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_bg3"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="bgEditorTexto"
+                                        app:srcCompat="@android:color/holo_blue_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_bg4"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="bgEditorTexto"
+                                        app:srcCompat="@android:color/holo_green_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_bg5"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="bgEditorTexto"
+                                        app:srcCompat="@android:color/holo_blue_light" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_bg6"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="bgEditorTexto"
+                                        app:srcCompat="@android:color/holo_purple" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_bg7"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="bgEditorTexto"
+                                        app:srcCompat="@android:color/white" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_bg8"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="bgEditorTexto"
+                                        app:srcCompat="@android:color/holo_orange_light" />
+                                </LinearLayout>
+                            </HorizontalScrollView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <SeekBar
+                        android:id="@+id/ET_seekbar_bg_alpha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_ET3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_weight="1"
+                            android:text="Texto"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:orientation="vertical">
+
+                            <HorizontalScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:background="#28ffffff"
+                                android:scrollbars="none">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="2dp">
+
+                                    <ImageView
+                                        android:id="@+id/ET_color1"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorTexto"
+                                        app:srcCompat="@android:color/background_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_color2"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorTexto"
+                                        app:srcCompat="@android:color/holo_red_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_color3"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorTexto"
+                                        app:srcCompat="@android:color/holo_blue_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_color4"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorTexto"
+                                        app:srcCompat="@android:color/holo_green_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_color5"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorTexto"
+                                        app:srcCompat="@android:color/holo_blue_light" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_color6"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorTexto"
+                                        app:srcCompat="@android:color/holo_purple" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_color7"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorTexto"
+                                        app:srcCompat="@android:color/holo_orange_light" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_color8"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="colorEditorTexto"
+                                        app:srcCompat="@android:color/white" />
+                                </LinearLayout>
+                            </HorizontalScrollView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <SeekBar
+                        android:id="@+id/ET_seekbar_color_alpha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_weight="1"
+                            android:text="Tamaño"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <Space
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/ET_ind_tamano"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:inputType="number"
+                                android:text="0"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <SeekBar
+                            android:id="@+id/ET_seekbar_tamano"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="2" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:orientation="vertical">
+
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:background="#28ffffff"
+                                android:scrollbars="none">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:padding="2dp">
+
+                                    <ImageView
+                                        android:id="@+id/ET_normal"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:visibility="gone"
+                                        app:srcCompat="@android:color/background_dark" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_bold"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="opcionesEditorTexto"
+                                        app:srcCompat="@drawable/ic_format_bold_black_24dp" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_italic"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="opcionesEditorTexto"
+                                        app:srcCompat="@drawable/ic_format_italic_black_24dp" />
+
+                                    <Space
+                                        android:layout_width="10dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_align_start"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="opcionesEditorTexto"
+                                        app:srcCompat="@drawable/ic_format_align_left_black_24dp" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_align_center"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="opcionesEditorTexto"
+                                        app:srcCompat="@drawable/ic_format_align_center_black_24dp" />
+
+                                    <ImageView
+                                        android:id="@+id/ET_align_end"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:onClick="opcionesEditorTexto"
+                                        app:srcCompat="@drawable/ic_format_align_right_black_24dp" />
+                                </LinearLayout>
+                            </HorizontalScrollView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#28ffffff"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/editorTexto"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:gravity="top"
+                            android:hint="INGRESE EL TEXTO AQUÍ"
+                            android:inputType="textMultiLine"
+                            android:minHeight="100dp" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

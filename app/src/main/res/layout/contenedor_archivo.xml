@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contenedor_archivo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+
+    <ImageView
+        android:id="@+id/iv_archivo"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="1dp"
+        app:srcCompat="@drawable/nota_simple" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="2dp">
+
+        <TextView
+            android:id="@+id/tv_nombre_archivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del archivo"
+            android:textColor="@android:color/background_light"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tv_descripcion_archivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="74.3MB"
+            android:textColor="@android:color/background_light"
+            android:textSize="14dp" />
+
+        <View
+            android:id="@+id/div2"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="#32000000" />
+    </LinearLayout>
+
+
+</LinearLayout>

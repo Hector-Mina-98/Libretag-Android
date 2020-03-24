@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Ppl_layoutINI"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.application.heccoder.libretag.Workspace">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/Ppl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.application.heccoder.libretag.Workspace">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/linear_activity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            android:orientation="vertical">
+
+        </android.support.constraint.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_activity"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@color/colorAccent"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_launcher_round" />
+
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/panel_titulo_workspace"
+            android:id="@+id/panel_titulo_workspace"/>
+
+        <FrameLayout
+            android:id="@+id/frame_bloqueo_hilo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#64ffffff"
+            android:visibility="visible"
+            android:clickable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ProgressBar
+                        android:id="@+id/barraProgresoTemp"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/contenedor_editor_texto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <com.github.mmin18.widget.RealtimeBlurView
+            android:id="@+id/difuminadoTXT"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:realtimeBlurRadius="15dp"
+            android:clickable="true"
+            app:realtimeOverlayColor="#c890a4ae" />
+
+        <include layout="@layout/editor_texto"
+            android:clickable="true"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/contenedor_editor_imagen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <include layout="@layout/editor_imagen"
+            android:clickable="true"/>
+
+    </FrameLayout>
+
+    <include layout="@layout/editor_dibujo"
+        android:id="@+id/contenedor_editor_dibujo"
+        android:visibility="gone"/>
+
+</FrameLayout>

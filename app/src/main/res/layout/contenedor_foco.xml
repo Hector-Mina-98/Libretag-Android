@@ -1,0 +1,120 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contenedor_figura"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    tools:ignore="VectorDrawableCompat"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+    </LinearLayout>
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:columnCount="3">
+
+        <ImageView
+            android:id="@+id/foco_scaLeTop"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:rotation="-135"
+            app:layout_gravity="bottom|right"
+            android:background="@drawable/circle"
+            android:elevation="1dp"
+            app:srcCompat="@drawable/foco_figura_expand" />
+
+        <ImageView
+            android:id="@+id/foco_move"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/circle"
+            android:paddingBottom="1dp"
+            app:layout_gravity="center"
+            android:elevation="1dp"
+            app:srcCompat="@drawable/foco_figura_rotar" />
+
+        <ImageView
+            android:id="@+id/foco_scaRiTop"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:rotation="-45"
+            app:layout_gravity="bottom|left"
+            android:background="@drawable/circle"
+            android:elevation="1dp"
+            app:srcCompat="@drawable/foco_figura_expand" />
+
+        <ImageView
+            android:id="@+id/foco_rotLef"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:rotation="180"
+            app:layout_gravity="right|center_vertical"
+            android:background="@drawable/circle"
+            android:elevation="1dp"
+            app:srcCompat="@drawable/foco_figura_expand" />
+
+        <LinearLayout
+            android:id="@+id/contenedor_rectangulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_gravity="center">
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/foco_rotRig"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_gravity="left|center_vertical"
+            android:background="@drawable/circle"
+            android:elevation="1dp"
+            app:srcCompat="@drawable/foco_figura_expand" />
+
+        <ImageView
+            android:id="@+id/foco_scaLeBot"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:rotation="135"
+            app:layout_gravity="top|right"
+            android:background="@drawable/circle"
+            android:elevation="1dp"
+            app:srcCompat="@drawable/foco_figura_expand" />
+
+        <ImageView
+            android:id="@+id/foco_rotBot"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_gravity="top|center_horizontal"
+            android:background="@drawable/circle"
+            android:elevation="1dp"
+            app:srcCompat="@drawable/foco_figura_expand" />
+
+        <ImageView
+            android:id="@+id/foco_scaRiBot"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:rotation="45"
+            app:layout_gravity="top|left"
+            android:background="@drawable/circle"
+            android:elevation="1dp"
+            app:srcCompat="@drawable/foco_figura_expand" />
+
+    </android.support.v7.widget.GridLayout>
+
+</LinearLayout>
+
+
+

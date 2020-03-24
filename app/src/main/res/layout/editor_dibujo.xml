@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    tools:ignore="VectorDrawableCompat"
+    android:orientation="horizontal">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/ED_tope_tercio_pantalla"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ED_parte_visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/linear_titulo_editor_dibujo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#78909c"
+                        android:orientation="horizontal"
+                        android:padding="6dp">
+
+                        <ImageView
+                            android:id="@+id/ED_more_less"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/fondo_botones_main"
+                            android:onClick="opcionesEditorDibujo"
+                            app:srcCompat="@drawable/editor_dibujo_mas_opciones" />
+
+                        <TextView
+                            android:id="@+id/tv_ED"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="30dp"
+                            android:text="Editar trazo"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="left"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/ED_linear_opc_ppl"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ED_lapiz"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/fondo_botones_main"
+                                    android:onClick="opcionesEditorDibujo"
+                                    android:padding="2dp"
+                                    app:srcCompat="@drawable/editor_dibujo_lapiz" />
+
+                                <ImageView
+                                    android:id="@+id/ED_borrador"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="5dp"
+                                    android:onClick="opcionesEditorDibujo"
+                                    android:padding="2dp"
+                                    app:srcCompat="@android:drawable/ic_input_delete" />
+
+                                <ImageView
+                                    android:id="@+id/ED_guardar"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="5dp"
+                                    android:onClick="opcionesEditorDibujo"
+                                    app:srcCompat="@drawable/editor_dibujo_aplicar" />
+
+                                <ImageView
+                                    android:id="@+id/ED_cerrar_editor"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:onClick="opcionesEditorDibujo"
+                                    app:srcCompat="@drawable/editor_dibujo_cerrar" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ScrollView
+                        android:id="@+id/ED_scroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#b0bec5"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_ED2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="30dp"
+                                    android:layout_weight="1"
+                                    android:text="Color"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold"
+                                    android:visibility="visible" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:orientation="vertical">
+
+                                    <HorizontalScrollView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="right"
+                                        android:background="#78909c"
+                                        android:scrollbars="none">
+
+                                        <LinearLayout
+                                            android:id="@+id/ED_linear_colores"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:orientation="horizontal"
+                                            android:padding="2dp">
+
+                                            <ImageView
+                                                android:id="@+id/ED_color_negro"
+                                                android:layout_width="30dp"
+                                                android:layout_height="30dp"
+                                                android:layout_margin="5dp"
+                                                android:layout_weight="1"
+                                                android:background="@android:color/background_dark"
+                                                android:onClick="colorEditorDibujo"
+                                                tools:srcCompat="@drawable/editor_dibujo_color_seleccionado" />
+
+                                            <ImageView
+                                                android:id="@+id/ED_color_rojo"
+                                                android:layout_width="30dp"
+                                                android:layout_height="30dp"
+                                                android:layout_margin="5dp"
+                                                android:layout_weight="1"
+                                                android:background="@android:color/holo_red_light"
+                                                android:onClick="colorEditorDibujo" />
+
+                                            <ImageView
+                                                android:id="@+id/ED_color_azul"
+                                                android:layout_width="30dp"
+                                                android:layout_height="30dp"
+                                                android:layout_margin="5dp"
+                                                android:layout_weight="1"
+                                                android:background="@android:color/holo_blue_dark"
+                                                android:onClick="colorEditorDibujo" />
+
+                                            <ImageView
+                                                android:id="@+id/ED_color_verde"
+                                                android:layout_width="30dp"
+                                                android:layout_height="30dp"
+                                                android:layout_margin="5dp"
+                                                android:layout_weight="1"
+                                                android:background="@android:color/holo_green_dark"
+                                                android:onClick="colorEditorDibujo" />
+
+                                            <ImageView
+                                                android:id="@+id/ED_color_gris"
+                                                android:layout_width="30dp"
+                                                android:layout_height="30dp"
+                                                android:layout_margin="5dp"
+                                                android:layout_weight="1"
+                                                android:background="@android:color/darker_gray"
+                                                android:onClick="colorEditorDibujo" />
+
+                                            <ImageView
+                                                android:id="@+id/ED_color_blanco"
+                                                android:layout_width="30dp"
+                                                android:layout_height="30dp"
+                                                android:layout_margin="5dp"
+                                                android:layout_weight="1"
+                                                android:background="@android:color/white"
+                                                android:onClick="colorEditorDibujo" />
+                                        </LinearLayout>
+                                    </HorizontalScrollView>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <SeekBar
+                                android:id="@+id/ED_seekbar_color_alpha"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_ED3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="30dp"
+                                    android:layout_weight="1"
+                                    android:text="Tamaño"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold"
+                                    android:visibility="visible" />
+
+                                <Space
+                                    android:layout_width="20dp"
+                                    android:layout_height="wrap_content" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/ED_img_tamano"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="TextView"
+                                        android:textSize="15dp" />
+                                </LinearLayout>
+
+                                <SeekBar
+                                    android:id="@+id/ED_seekbar_tamano"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_weight="2" />
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="20dp"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/ED_estado_motion_event"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/fondo_botones_main"
+                android:onClick="opcionesEditorDibujo"
+                android:padding="2dp"
+                app:srcCompat="@drawable/editor_dibujo_move" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <ImageView
+                android:id="@+id/ED_help"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/fondo_botones_main"
+                android:onClick="opcionesEditorDibujo"
+                app:srcCompat="@android:drawable/ic_menu_help" />
+        </LinearLayout>
+
+    </FrameLayout>
+</LinearLayout>
