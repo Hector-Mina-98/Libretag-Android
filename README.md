@@ -16,4 +16,7 @@ La aplicación se puede obtener a través de [este enlace](https://play.google.c
 
 ### Capturas de Pantalla
 
-![Image description](https://lh3.googleusercontent.com/7HAjIKFW4gRaJkXHbbwYvg0aQPa1hMCjOZXHGie6Mmtw1TwnaI5X1vngHBaRoNGomTA=w1366-h625-rw)
+![Captura 1](https://lh3.googleusercontent.com/7HAjIKFW4gRaJkXHbbwYvg0aQPa1hMCjOZXHGie6Mmtw1TwnaI5X1vngHBaRoNGomTA=w1366-h625-rw)
+![Captura 2](https://lh3.googleusercontent.com/_xS0Ixdi6USWD4TcU3nAP7XB81EEHbeOZtQnbfwm5OZ_6a_B3evOLbEgllrFBSKP0cw=w1366-h625-rw)
+![Captura 3](https://lh3.googleusercontent.com/rLxfkl4E_luVhX-WtJ6Y4yAn8IQAn2aWeJ1V-2WLoXey-GQ39AdmMfwSRUf5SaQO-h10=w720-h310-rw)
+![Captura 4](https://lh3.googleusercontent.com/73pxkJgIquFXqPJYiRKmW8W4KcMvay2JvvM1yuhv9hbavL3L5Gbrjs7Eo-_Cym2Im5E=w720-h310-rw)
