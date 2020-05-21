@@ -16,5 +16,6 @@ public class AyudaPaint extends AppCompatActivity {
         finish();
     }
 
+
     //Este es un nuevo cambio en el proyecto
 }
