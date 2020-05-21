@@ -15,4 +15,6 @@ public class AyudaPaint extends AppCompatActivity {
     public void okButton (View vista) {
         finish();
     }
+
+    //Este es un nuevo cambio en el proyecto
 }
