@@ -50,9 +50,10 @@ class Figura implements Serializable {
         layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        estado = "";
 
         contenidoTexto = "";
+
+        link = "";
     }
 
 
@@ -285,14 +286,6 @@ class Figura implements Serializable {
         if (this.vista != null) vista.setLayoutParams(new LinearLayout.LayoutParams(width, height));
     }
 
-    private String estado;
-    public String getEstado() {
-        return estado;
-    }
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     private byte[] byteArray;
     public byte[] getByteArray() {
         return byteArray;
@@ -384,5 +377,13 @@ class Figura implements Serializable {
         if (text_width <= 0) text_width = 20;
         this.text_width = text_width;
         if (this.vista != null) ((TextView)this.vista).setWidth(text_width);
+    }
+
+    private String link;
+    public String getLink() {
+        return link;
+    }
+    public void setLink(String link) {
+        this.link = link;
     }
 }
