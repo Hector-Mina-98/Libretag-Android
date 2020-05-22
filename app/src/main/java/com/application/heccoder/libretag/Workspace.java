@@ -710,9 +710,6 @@ public class Workspace extends AppCompatActivity {
             case R.id.ET_delete:
                 borrarFigura();
                 aplicarCambiosEditorTexto(null);
-                break;
-            case R.id.ET_link:
-                break;
         }
 
     }
