@@ -152,8 +152,8 @@ class FocoFigura {
 
     @SuppressLint("ClickableViewAccessibility")
     void enfocar (View contenedorFigura) {
-        Workspace.contenedor_editor_imagen.setVisibility(View.GONE);
-        Workspace.contenedor_editor_texto.setVisibility(View.GONE);
+        Workspace.panel_imagen(false);
+        Workspace.panel_texto(false);
 
         //primero activa o desactiva botones dependiendo del tipo de figura
         for(int b = 0; b < botones.size(); b++) {
@@ -167,7 +167,7 @@ class FocoFigura {
                 figuraActual = figuras.get(i);
                 if (figuras.get(i).getTipoVista() == Figura.IMAGE){ //Si es texto activa los botones laterales
                     Workspace.imagenFiguraActual = (ImageView) figuras.get(i).getVista();
-                    Workspace.contenedor_editor_imagen.setVisibility(View.VISIBLE);
+                    Workspace.panel_imagen(true);
                     Workspace.EdImg_linear_contenido.setVisibility(View.GONE);
                     ((ImageView)Workspace.EdImg_more_less).setImageResource(R.drawable.editor_dibujo_mas_opciones);
                     scaLeTop.setVisibility(View.VISIBLE);
@@ -175,7 +175,7 @@ class FocoFigura {
                     scaLeBot.setVisibility(View.VISIBLE);
                     scaRiBot.setVisibility(View.VISIBLE);
                 } else {
-                    Workspace.contenedor_editor_texto.setVisibility(View.VISIBLE);
+                    Workspace.panel_texto(true);
                     rotLef.setVisibility(View.VISIBLE);
                     rotRig.setVisibility(View.VISIBLE);
                 }
@@ -282,8 +282,8 @@ class FocoFigura {
 
         figuraActual = null;
 
-        Workspace.contenedor_editor_texto.setVisibility(View.GONE);
-        Workspace.contenedor_editor_imagen.setVisibility(View.GONE);
+        Workspace.panel_imagen(false);
+        Workspace.panel_texto(false);
         Workspace.imagenFiguraActual = null;
     }
 

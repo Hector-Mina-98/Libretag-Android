@@ -38,6 +38,7 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -50,6 +51,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import android.support.v7.app.AlertDialog;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -165,6 +167,7 @@ public class Workspace extends AppCompatActivity {
 
         //----------------------- EDITOR TEXTO -------------------------------------------
         contenedor_editor_texto = findViewById(R.id.contenedor_editor_texto);
+        ET_mas_opciones = findViewById(R.id.ET_mas_opciones);
         ET_linear_contenido = findViewById(R.id.ET_linear_contenido);
         ET_more_less = findViewById(R.id.ET_more_less);
         ET_seekbar_tamano = findViewById(R.id.ET_seekbar_tamano);
@@ -428,6 +431,16 @@ public class Workspace extends AppCompatActivity {
 
     //////////////////////////////////////////// EDITORES ///////////////////////////////////////////////////////////////////////
 
+    public static void panel_imagen (boolean mostrar) {
+        if (mostrar) Workspace.contenedor_editor_imagen.setVisibility(View.VISIBLE);
+        else Workspace.contenedor_editor_imagen.setVisibility(View.GONE);
+    }
+
+    public static void panel_texto (boolean mostrar) {
+        if (mostrar) Workspace.contenedor_editor_texto.setVisibility(View.VISIBLE);
+        else Workspace.contenedor_editor_texto.setVisibility(View.GONE);
+    }
+
     // ================================== EDITOR DIBUJO ======================================================
     public static ImageView ED_estado_motion_event;
 
@@ -606,6 +619,8 @@ public class Workspace extends AppCompatActivity {
 
     // ================================== EDITOR TEXTO ======================================================
 
+    public static View ET_mas_opciones;
+
     TextView textoFiguraActual;
     SeekBar ET_seekbar_tamano, ET_seekbar_bg_alpha, ET_seekbar_color_alpha;
 
@@ -643,6 +658,10 @@ public class Workspace extends AppCompatActivity {
                 }
             }
         }
+
+        ET_mas_opciones.setVisibility(View.VISIBLE);
+        findViewById(R.id.ET_linear_mas_opciones).setVisibility(View.GONE);
+        ((ScrollView)findViewById(R.id.ET_scroll)).smoothScrollTo(0,0);
     }
 
     public void opcionesEditorTexto (View vista) {
@@ -710,6 +729,31 @@ public class Workspace extends AppCompatActivity {
             case R.id.ET_delete:
                 borrarFigura();
                 aplicarCambiosEditorTexto(null);
+            case R.id.ET_mas_opciones:
+                if (findViewById(R.id.ET_linear_mas_opciones).getVisibility() != View.VISIBLE) {
+                    esconderTeclado(editorTexto);
+                    editorTexto.setVisibility(View.GONE);
+                    findViewById(R.id.ET_linear_mas_opciones).setVisibility(View.VISIBLE);
+                    (findViewById(R.id.ET_ind_tamano)).requestFocus();
+                    ((ScrollView)findViewById(R.id.ET_scroll)).fullScroll(ScrollView.FOCUS_UP);
+                    editorTexto.setVisibility(View.VISIBLE);
+                    ((ScrollView)findViewById(R.id.ET_scroll)).smoothScrollTo(0,0);
+                    (findViewById(R.id.ET_scroll)).getViewTreeObserver().
+                            addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+                                @Override
+                                public void onScrollChanged() {
+                                    if ((findViewById(R.id.ET_scroll)).getScrollY() >
+                                            (findViewById(R.id.ET_linear_mas_opciones).getHeight())
+                                            && findViewById(R.id.ET_linear_mas_opciones).getVisibility() == View.VISIBLE) {
+                                        findViewById(R.id.ET_linear_mas_opciones).setVisibility(View.GONE);
+                                        ((EditText)editorTexto).setSelection(0);
+                                        ((ScrollView)findViewById(R.id.ET_scroll)).smoothScrollTo(0,0);
+                                    }
+                                }
+                            });
+                }
+                else findViewById(R.id.ET_linear_mas_opciones).setVisibility(View.GONE);
+                break;
         }
 
     }
@@ -728,6 +772,7 @@ public class Workspace extends AppCompatActivity {
     }
 
     public void aplicarCambiosEditorTexto (View vista) {
+        ET_mas_opciones.setVisibility(View.GONE);
         ((ImageView)ET_more_less).setImageResource(R.drawable.editor_dibujo_mas_opciones);
         //Toast.makeText(contexto, "EDITOR TEXTO CERRADO", Toast.LENGTH_SHORT).show();
         ET_linear_contenido.setVisibility(View.GONE);
@@ -1013,9 +1058,12 @@ public class Workspace extends AppCompatActivity {
         if (paqueteOnRestore.getInt("pestana") == 1) {
             ((ImageView)ET_more_less).setImageResource(R.drawable.editor_texo_regresar);
             //Toast.makeText(getApplication(), "NUEVO: " + paqueteOnRestore.getInt("figuraTextoActual"), Toast.LENGTH_SHORT).show();
-            ET_linear_contenido.setVisibility(View.VISIBLE);
             findViewById(R.id.difuminadoTXT).setVisibility(View.VISIBLE);
-            contenedor_editor_texto.setVisibility(View.VISIBLE);
+
+            panel_texto(true);
+            ET_linear_contenido.setVisibility(View.VISIBLE);
+            ET_mas_opciones.setVisibility(View.VISIBLE);
+
             linear_activity.setEnabled(false);
             pestana = 1;
             constraintCanvas.setIdActual(paqueteOnRestore.getInt("figuraTextoActual"));

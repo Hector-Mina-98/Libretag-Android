@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/E:/Android2/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_link_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/E:/Android2/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_build_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="link" />
+                            <entry key="outputName" value="editor_texto_mas_opciones" />
                             <entry key="sourceFile" value="C:\Users\HFMQ" />
                           </map>
                         </option>
