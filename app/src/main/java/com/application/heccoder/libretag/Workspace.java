@@ -746,7 +746,7 @@ public class Workspace extends AppCompatActivity {
                                             (findViewById(R.id.ET_linear_mas_opciones).getHeight())
                                             && findViewById(R.id.ET_linear_mas_opciones).getVisibility() == View.VISIBLE) {
                                         findViewById(R.id.ET_linear_mas_opciones).setVisibility(View.GONE);
-                                        ((EditText)editorTexto).setSelection(0);
+                                        //((EditText)editorTexto).setSelection(0);
                                         ((ScrollView)findViewById(R.id.ET_scroll)).smoothScrollTo(0,0);
                                     }
                                 }
