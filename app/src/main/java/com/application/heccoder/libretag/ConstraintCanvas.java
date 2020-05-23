@@ -2,6 +2,7 @@ package com.application.heccoder.libretag;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.CountDownTimer;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -214,7 +216,7 @@ public class ConstraintCanvas extends ConstraintLayout {
 
     private int[] locationFigura = new int[2];
 
-    boolean ubicarFigura (MotionEvent motionEvent) {
+    boolean ubicarFigura (MotionEvent motionEvent, boolean abrirLink) {
 
         boolean encontro = false;
 
@@ -249,15 +251,25 @@ public class ConstraintCanvas extends ConstraintLayout {
             Workspace.iv.setY(locationFigura[1] + y_r - 50);
             */
 
-            if (x > 0 && x < dimX)
+            if (x > 0 && x < dimX) {
                 if (y > 0 && y < dimY) {
 
-                    enfoque(figuras.get(i).getContenedorFigura(),figuras.get(i));
-                    encontro = true;
+                    if (abrirLink) {
+                        if (figuras.get(i).isLinkEnable()) {
+                            Intent intent = new Intent(pplLayout.getContext(),VisorLink.class);
+                            intent.putExtra("URL",figuras.get(i).getLink());
+                            pplLayout.getContext().startActivity(intent);
+                        }
+
+                    } else {
+                        enfoque(figuras.get(i).getContenedorFigura(),figuras.get(i));
+                        encontro = true;
+                    }
 
                     //i = figuras.size();
                     i = -1;
                 }
+            }
 
         }
 

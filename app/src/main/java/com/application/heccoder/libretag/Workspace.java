@@ -41,6 +41,8 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -84,7 +86,7 @@ public class Workspace extends AppCompatActivity {
     static ImageView iv;
 
     public static View contenedor_editor_texto;
-    View ET_linear_contenido, ET_more_less, editorTexto;
+    View ET_linear_contenido, ET_more_less, editorTexto, ET_link_enable, ET_link;
 
     public static View contenedor_editor_imagen, EdImg_linear_contenido, EdImg_more_less;
 
@@ -241,6 +243,14 @@ public class Workspace extends AppCompatActivity {
 
             }
         });
+        ET_link_enable = findViewById(R.id.ET_link_enable);
+        ((CheckBox)ET_link_enable).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                opcionesEditorTexto(ET_link_enable);
+            }
+        });
+        ET_link = findViewById(R.id.ET_link);
 
         //------------------------ EDITOR DIBUJO ----------------------------------------
         contenedor_editor_dibujo = findViewById(R.id.contenedor_editor_dibujo);
@@ -633,6 +643,16 @@ public class Workspace extends AppCompatActivity {
             if (figuras.get(i).getIdFigura() == idActual &&
                     constraintCanvas.getFocoFigura().getContenedorFoco().getVisibility() == View.VISIBLE) {
                 if (figuras.get(i).getTipoVista() == Figura.TEXT_VIEW){
+
+                    if (constraintCanvas.getFiguras().get(i).isLinkEnable()){
+                        ((CheckBox)ET_link_enable).setChecked(true);
+                        ET_link.setEnabled(true);
+                    } else {
+                        ((CheckBox)ET_link_enable).setChecked(false);
+                        ET_link.setEnabled(false);
+                    }
+                    ((EditText)ET_link).setText( constraintCanvas.getFiguras().get(i).getLink() );
+
                     textoFiguraActual = (TextView) figuras.get(i).getVista();
                     linear_activity.setEnabled(false);
                     ET_linear_contenido.setVisibility(View.VISIBLE);
@@ -754,6 +774,18 @@ public class Workspace extends AppCompatActivity {
                 }
                 else findViewById(R.id.ET_linear_mas_opciones).setVisibility(View.GONE);
                 break;
+            case R.id.ET_link_enable:
+                if (findViewById(R.id.ET_linear_mas_opciones).getVisibility() == View.VISIBLE) {
+                    if (((CheckBox)ET_link_enable).isChecked()) {
+                        (ET_link).setEnabled(true);
+                        ET_link.requestFocus();
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.showSoftInput(ET_link, InputMethodManager.SHOW_IMPLICIT);
+                    } else {
+                        (ET_link).setEnabled(false);
+                    }
+                }
+                break;
         }
 
     }
@@ -789,6 +821,24 @@ public class Workspace extends AppCompatActivity {
             if (editorTexto.getBackground() != null)
                 textoFiguraActual.setBackgroundColor( ((ColorDrawable)editorTexto.getBackground()).getColor() );
             else textoFiguraActual.setBackgroundColor(Color.TRANSPARENT);
+
+            ArrayList<Figura> figuras = constraintCanvas.getFiguras();
+            int idActual = constraintCanvas.getIdActual();
+            for (int i = 0; i < figuras.size(); i++) {
+                if (figuras.get(i).getIdFigura() == idActual) {
+                    if (figuras.get(i).getTipoVista() == Figura.TEXT_VIEW) {
+                        if (((CheckBox)ET_link_enable).isChecked() && !((EditText)ET_link).getText().toString().trim().equals("")){
+                            constraintCanvas.getFiguras().get(i).setLinkEnable(true);
+                        } else {
+                            constraintCanvas.getFiguras().get(i).setLinkEnable(false);
+                        }
+                        constraintCanvas.getFiguras().get(i).setLink( ((EditText)ET_link).getText().toString().trim() );
+                    }
+
+                }
+
+            }
+
             //se cierra el editor
             textoFiguraActual = null;
             constraintCanvas.enfoqueAuto(true);
@@ -1064,6 +1114,8 @@ public class Workspace extends AppCompatActivity {
             ET_linear_contenido.setVisibility(View.VISIBLE);
             ET_mas_opciones.setVisibility(View.VISIBLE);
 
+            ET_link.setEnabled(((CheckBox)ET_link_enable).isChecked());
+
             linear_activity.setEnabled(false);
             pestana = 1;
             constraintCanvas.setIdActual(paqueteOnRestore.getInt("figuraTextoActual"));
@@ -1081,6 +1133,9 @@ public class Workspace extends AppCompatActivity {
                     ((EditText)editorTexto).setTextColor(paqueteOnRestore.getInt("colorEditorTexto"));
                     editorTexto.setBackgroundColor(paqueteOnRestore.getInt("fondoEditorTexto"));
                     ET_seekbar_tamano.setProgress(paqueteOnRestore.getInt("tamanoEditorTexto"));
+
+                    constraintCanvas.enfoque(constraintCanvas.getFiguras().get(i).getContenedorFigura(),
+                            constraintCanvas.getFiguras().get(i));
                 }
             }
 
@@ -1414,6 +1469,9 @@ public class Workspace extends AppCompatActivity {
                         figuras.get(i).setText_alignment( figurasFILE.get(i).getText_alignment() );
                         figuras.get(i).setText_style( figurasFILE.get(i).getText_style() );
                         figuras.get(i).setText_width( figurasFILE.get(i).getText_width() );
+                        //Atributos link
+                        figuras.get(i).setLinkEnable( figurasFILE.get(i).isLinkEnable() );
+                        figuras.get(i).setLink( figurasFILE.get(i).getLink() );
                     }
 
                     publishProgress(i);

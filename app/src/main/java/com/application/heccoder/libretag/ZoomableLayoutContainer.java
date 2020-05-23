@@ -267,7 +267,7 @@ public class ZoomableLayoutContainer extends ConstraintLayout {
     boolean encontro;
 
     private void ubicar () {
-        encontro = constraint_canvas.ubicarFigura(me);
+        encontro = constraint_canvas.ubicarFigura(me, false);
 
         if (encontro) {
             Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
@@ -440,6 +440,7 @@ public class ZoomableLayoutContainer extends ConstraintLayout {
                 primerMultiTouch = false;
 
                 if((Math.abs(x-xref)<10) && (Math.abs(y-yref)<10) && !encontro){
+                    encontro = constraint_canvas.ubicarFigura(me, true);
                     constraint_canvas.enfoqueAuto(true);
                     if (countDownTimer != null) {
                         countDownTimer.cancel();

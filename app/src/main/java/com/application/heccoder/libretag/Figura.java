@@ -54,6 +54,7 @@ class Figura implements Serializable {
         contenidoTexto = "";
 
         link = "";
+        linkEnable = false;
     }
 
 
@@ -385,5 +386,13 @@ class Figura implements Serializable {
     }
     public void setLink(String link) {
         this.link = link;
+    }
+
+    private boolean linkEnable;
+    public boolean isLinkEnable() {
+        return linkEnable;
+    }
+    public void setLinkEnable(boolean linkEnable) {
+        this.linkEnable = linkEnable;
     }
 }

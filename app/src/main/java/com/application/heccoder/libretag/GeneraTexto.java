@@ -109,13 +109,15 @@ public class GeneraTexto {
                         writer.append("\n\t\tfigure:scale_y=").append('"').append(String.valueOf(figura.getScaY())).append('"');
                         writer.append("\n\t\tfigure:image_alpha=").append('"').append(String.valueOf(figura.getImageAlpha())).append('"');
                     } else {
-                        crearArchivoTxt(figura.getContenidoTexto(),figura.getIdFigura());
+                        crearArchivoTxt(figura.getContenidoTexto(),figura.getIdFigura(),TXT_EXT);
                         writer.append("\n\t\tfigure:text_size=").append('"').append(String.valueOf(figura.getText_size())).append('"');
                         writer.append("\n\t\tfigure:text_color=").append('"').append(String.valueOf(figura.getText_color())).append('"');
                         writer.append("\n\t\tfigure:text_background=").append('"').append(String.valueOf(figura.getText_background())).append('"');
                         writer.append("\n\t\tfigure:text_alignment=").append('"').append(String.valueOf(figura.getText_alignment())).append('"');
                         writer.append("\n\t\tfigure:text_style=").append('"').append(String.valueOf(figura.getText_style())).append('"');
                         writer.append("\n\t\tfigure:text_width=").append('"').append(String.valueOf(figura.getText_width())).append('"');
+                        crearArchivoTxt(figura.getLink(),figura.getIdFigura(),LINK_EXT);
+                        writer.append("\n\t\tfigure:link_enable=").append('"').append(figura.isLinkEnable()?"true":"false").append('"');
                     }
                     writer.append(" />");
                 }
@@ -161,7 +163,9 @@ public class GeneraTexto {
         }
     }
 
-    public static void crearArchivoTxt(String text, int idFigura) {
+    static String LINK_EXT = ".LINK";
+    static String TXT_EXT = ".TXT";
+    public static void crearArchivoTxt(String text, int idFigura, String extArchivo) {
         try {
 
             File carpeta = new File(Environment.getExternalStorageDirectory(), "Libretag/data/current");
@@ -169,7 +173,7 @@ public class GeneraTexto {
 
 
             String path2 = Environment.getExternalStorageDirectory() + File.separator + "Libretag/data/current"
-                    + File.separator + String.valueOf(idFigura) + ".TXT";
+                    + File.separator + String.valueOf(idFigura) + extArchivo;
 
             File archivo = new File(path2);
             FileWriter writer = new FileWriter(archivo);
@@ -269,7 +273,7 @@ public class GeneraTexto {
             if (!carpeta.exists()) carpeta.mkdirs();
             File[] archivos = carpeta.listFiles();
             for (int i = 0; i < archivos.length; i++) {
-                if (archivos[i].getName().equalsIgnoreCase(valor + ".TXT")) {
+                if (archivos[i].getName().equalsIgnoreCase(valor + TXT_EXT)) {
                     try {
                         String line;
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(archivos[i])));
@@ -304,6 +308,25 @@ public class GeneraTexto {
                         figura.setText_style(Integer.parseInt(valor));
                         valor = encontrarValor(str.toString(),"figure:text_width=");
                         figura.setText_width(Integer.parseInt(valor));
+                        valor = encontrarValor(str.toString(),"figure:link_enable=");
+                        valor = (valor.equals("0")) ? "false" : valor;
+                        figura.setLinkEnable(valor.equals("true"));
+
+                        Log.d("LINK_ARCHIVO","BUSCANDO LINK");
+                        valor = String.valueOf(figura.getIdFigura());
+                        for (int j = 0; j < archivos.length; j++) {
+                            if (archivos[j].getName().equalsIgnoreCase(valor + LINK_EXT)) {
+                                bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(archivos[j])));
+                                stringBuilder = new StringBuilder();
+                                while ((line = bufferedReader.readLine()) != null) {
+                                    stringBuilder.append(line).append("\n");
+                                }
+                                if (stringBuilder.length() > 0) figura.setLink(stringBuilder.substring(0,stringBuilder.length()-1));
+                                j = archivos.length;
+                                Log.d("LINK_ARCHIVO",figura.getLink());
+                            }
+                        }
+
                         //Log.d("TEXT_WIDTH","valor = " + valor);
 
                         figuras.add(figura);
